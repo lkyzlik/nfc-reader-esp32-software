@@ -2,7 +2,7 @@
 Software part of the secure NFC card reader developed on the ESP32 platform. My Bachelor thesis project created at Brno University of Technology.
 
 ## Other Parts
-* Hardware part:
+* Hardware part: [github.com/garnagar/nfc-reader-esp32-hardware](https://github.com/garnagar/nfc-reader-esp32-hardware)
 
 ## Requirements
 * Hardware part of the project assembled
@@ -12,12 +12,13 @@ Software part of the secure NFC card reader developed on the ESP32 platform. My 
 ## Install
 1. Get [Espressif IoT Development Framework](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html) and install it.
 2. Build project by running command
-
-    `idf.py build`
-
+    ```
+    idf.py build
+    ```
 3. Upload program onto ESP32 board by running with correct port name
-
-     `idf.py -p (PORT) flash`
+     ```
+     idf.py -p (PORT) flash
+     ```
 
 ## Demo Functionality
 The reader waits for detection of ISO/IEC 14443A card. When the card is detected, it reads the card's ID and another 32 bytes from its EEPROM memory and sends this data over Wi-Fi to a backend server. The server checks card data against a database and sends back information whether the card owner has access rights. Upon processing the response, the prototype reader signals it to a user with a flash of its indicator LED. Red light for "access denied" or green for "access granted". If the reader is unplugged and the battery charge level is critical, the indicator LED lights up orange and other indications are disabled until the reader is plugged in.
@@ -40,3 +41,6 @@ GPIO component `card_reader_gpio` provides functionality to control onboard and 
 
 ### Main Component
 Main component contains main program that controls the reader and realizes functionality described in Demo Functionality. It is also an entry point of the program.
+
+## Notices
+* `pn532` component was created by *binh8994* and added to this project under Unilicense. Original project: [github.com/binh8994/pn532-esp-idf](https://github.com/binh8994/pn532-esp-idf)
